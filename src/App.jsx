@@ -15,17 +15,13 @@ import Contactcard from './components/contactcard'
 import { Searchheader } from './components/searchheader'
 import Model from './components/model'
 import AddAndupdate from './components/addAndupdate'
+import useDisclouse from './hooks/useDisclouse'
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const onOpen = () => {
-    setIsOpen(true);
-  }
-  const onClose = () => {
-    setIsOpen(false);
-  }
+  const {isOpen, onClose, onOpen} = useDisclouse();
+  
 
   useEffect(() => {
     const getContacts = async () => {

@@ -4,7 +4,7 @@ import Model from "./model";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 
-const AddAndupdate = ({ onClose, isOpen }) => {
+const AddAndupdate = ({ onClose, isOpen, contact , isUpdate}) => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
 
@@ -18,6 +18,8 @@ const AddAndupdate = ({ onClose, isOpen }) => {
       console.log(error);
     }
   };
+
+  
 
   return (
     <div>
@@ -42,7 +44,7 @@ const AddAndupdate = ({ onClose, isOpen }) => {
             Enter Email:
             <input className="h-10 border-2 border-gray-300 text-black rounded-md p-2 "
               type="text"
-              name="ema"
+              name="email"
               value={email}
               onChange={(e) => {
                 console.log(e.target.value);
