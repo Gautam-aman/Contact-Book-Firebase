@@ -21,6 +21,27 @@ const App = () => {
   const [contacts, setContacts] = useState([]);
 
   const {isOpen, onClose, onOpen} = useDisclouse();
+
+  const filtercontact =(e)=>{
+    const search = e.target.value;
+    const contactref = collection(db, 'contacts');
+    onSnapshot(contactref, (snapshot)=>{
+      const contactLists = snapshot.docs.map((doc)=>{
+        return {
+          id : doc.id, 
+          ...doc.data()
+        }
+      })
+      const filteredContacts = contactLists.filter((contact)=>
+        contact.Name.toLowerCase().includes(search.toLowerCase())
+      );
+      setContacts(filteredContacts);
+    })
+
+    
+    
+    return filtercontact;
+  }
   
 
   useEffect(() => {
@@ -54,7 +75,7 @@ const App = () => {
       <Navbar/>
       <div className='w-[900px] ml-66 flex flex-col justify-center items-center ' >
         <div className=''>
-        <Searchheader onOpen={onOpen}/>
+        <Searchheader onOpen={onOpen} filtercontact={filtercontact}/>
         </div>
        
       <div className='w-[500px]'>
