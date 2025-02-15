@@ -13,9 +13,20 @@ import { db } from './config/firebase'
 import {  onSnapshot } from "firebase/firestore";
 import Contactcard from './components/contactcard'
 import { Searchheader } from './components/searchheader'
+import Model from './components/model'
+import AddAndupdate from './components/addAndupdate'
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const onOpen = () => {
+    setIsOpen(true);
+  }
+  const onClose = () => {
+    setIsOpen(false);
+  }
+
   useEffect(() => {
     const getContacts = async () => {
       try {
@@ -42,11 +53,12 @@ const App = () => {
   }, []);
 
   return (
+    <>
     <div>
       <Navbar/>
       <div className='w-[900px] ml-66 flex flex-col justify-center items-center ' >
         <div className=''>
-        <Searchheader/>
+        <Searchheader onOpen={onOpen}/>
         </div>
        
       <div className='w-[500px]'>
@@ -63,6 +75,8 @@ const App = () => {
    
     </div>
     </div>
+    <AddAndupdate onClose={onClose} isOpen={isOpen}/>
+    </>
   )
 }
  

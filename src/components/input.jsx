@@ -42,7 +42,7 @@ const Input = () => {
         <div className='bg-white h-[40px] w-[500px] rounded-full flex justify-center items-center'>
             <input className='bg-white h-[40px] w-[450px] hover:outline-none rounded-full flex justify-center items-center' type='text'/>
         </div>
-        <AiFillPlusCircle className='m-2 text-cyan-50 text-5xl cursor-pointer'/>
+        <AiFillPlusCircle  className='m-2 text-cyan-50 text-5xl cursor-pointer'/>
     </div>
     <div>
          {contacts.map((contact)=>(
